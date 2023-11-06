@@ -19,19 +19,28 @@ int main(int __attribute__((unused))argc, char **argv, char **env)
 
 		buffer = input_handle(buffer);
 
+		
+		
 		if (read == -1)
 			break;
 
 		if (strcmp(buffer, "exit") == 0)
 			break;
-
+		else if (!strcmp(buffer, "env"))
+			print_env(env);
 		else
 		{
 			PID = fork();
+			if (PID < 0)
+            {
+                perror("Fork failed");
+                exit(1);
+            }
             if (PID == 0)
             {
                 if (execve(buffer, argv, env) == -1)
                     perror(buffer);
+					break;
             }
             else
                 wait(NULL);

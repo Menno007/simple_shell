@@ -10,6 +10,8 @@
 char *rm_getline_newline(char *buff);
 char *find_cmd_path(char *cmd);
 char *input_handle(char *input);
-char **arg_handle(char *arg);
+int arg_handle(char *buffer, char *cmd, char **argv);
+char *remove_spaces(char *input);
+void print_env(char **x);
 
 #endif
