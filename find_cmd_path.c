@@ -64,6 +64,7 @@ char **handle_arg(char *buffer)
 	{
 		result[i] = strtok(NULL, " ");
 	}
+	free(result);
 
 	return (result);
 }
