@@ -6,9 +6,9 @@
 */
 void print_env(char **x)
 {
-    while (*x)
-    {
-        printf("%s\n", *x);
-        x++;
-    }
+	while (*x)
+	{
+		printf("%s\n", *x);
+		x++;
+	}
 }
