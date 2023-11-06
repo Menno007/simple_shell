@@ -13,5 +13,5 @@ char *input_handle(char *input);
 int arg_handle(char *buffer, char *cmd, char **argv);
 char *remove_spaces(char *input);
 void print_env(char **x);
-char **handle_arg(char *buffer);
+
 #endif
