@@ -6,8 +6,8 @@
  */
 int main(int __attribute__((unused))argc, char **argv, char **env)
 {
-	char *buffer = NULL, *args, *cmd;
-	int read, PID, arg_count = 0;
+	char *buffer = NULL;
+	int read, PID;
 	size_t len = 0;
 
 	while (1)
@@ -23,7 +23,8 @@ int main(int __attribute__((unused))argc, char **argv, char **env)
 			break;
 
 		if (strcmp(buffer, "exit") == 0)
-			return(0);
+			break;
+
 		else
 		{
 			PID = fork();
