@@ -1,14 +1,16 @@
 #include "main.h"
 /**
- * print_env - jsjs
- * @x: djdjd
- * Return: 0
+ * print_env - prints the eviron var list
+ * @envp: the environ var list
 */
-void print_env(char **x)
+void print_env(char **envp)
 {
-    while (*x)
-    {
-        printf("%s\n", *x);
-        x++;
-    }
+	if (!envp)
+		return;
+
+	while (*envp)
+	{
+		printf("%s\n", *envp);
+		envp++;
+	}
 }
