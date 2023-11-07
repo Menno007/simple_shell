@@ -22,6 +22,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
+		argv = arg_handle(input);
 
 		if (read == -1)
 			break;
@@ -44,7 +45,9 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			else
 				wait(NULL);
 		}
+		free(argv);
 	}
+	free(argv);
 	free(input);
 	return (0);
 }
