@@ -13,30 +13,27 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 	char *input = NULL;
 	int read, PID;
 	size_t len = 0, counter = 0;
-	char *path = getenv("PATH");
 
 	while (1)
 	{
 		counter++;
 		if (isatty(STDIN_FILENO))
 			printf("Minno&HYPER~$ ");
-
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
 		argv = arg_handle(input);
-
 		if (read == -1)
 			break;
 		if (_strcmp(input, "exit") == 0)
 			break;
 		if (_strcmp(input, "env") == 0)
 			print_env(envp);
-
 		else
 		{
 			PID = fork();
 			if (PID == 0)
 			{
+				input = input_handle(input);
 				if (execve(input, argv, envp) == -1)
 				{
 					printf("%s: %ld: %s: not found\n", argv[0], counter, input);

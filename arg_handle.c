@@ -6,10 +6,16 @@
  */
 char **arg_handle(char *input)
 {
-	int arg_count = 0, i;
-	char **argv, *token, *tmp, input_copy[1024];
+	int arg_count = 0, i, input_len;
+	char **argv, *token, *tmp, *input_copy;
 
 	if (!input)
+		return (NULL);
+
+	input_len = strlen(input);
+
+	input_copy = malloc(sizeof(char) * (input_len + 1));
+	if (input_copy == NULL)
 		return (NULL);
 
 	strcpy(input_copy, input);
@@ -17,7 +23,7 @@ char **arg_handle(char *input)
 	tmp = strtok(input_copy, " ");
 
 	if (tmp == NULL)
-		return (0);
+		return (NULL);
 
 	while (tmp != NULL)
 	{
@@ -27,8 +33,10 @@ char **arg_handle(char *input)
 
 	argv = (char **)malloc((arg_count + 2) * sizeof(char *));
 	if (argv == NULL)
-		return (0);
-
+	{
+		free(input_copy);
+		return (NULL);
+	}
 	strcpy(input_copy, input);
 	argv[0] = strtok(input_copy, " ");
 
@@ -37,7 +45,6 @@ char **arg_handle(char *input)
 		token = strtok(NULL, " ");
 		argv[i] = token;
 	}
-
 	argv[arg_count + 1] = NULL;
 
 	strcpy(input, argv[0]);

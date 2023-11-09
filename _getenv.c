@@ -7,7 +7,6 @@
 char *_getenv(char *env_var)
 {
 	int j, i;
-	char *spretor;
 	int back;
 
 	back = _strlen(env_var);
