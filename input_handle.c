@@ -8,16 +8,18 @@
  */
 char *input_handle(char *input)
 {
-	if (strncmp(input, "/", 1) != 0)
+	if (input[0] == '/')
 	{
-		input = find_path(input);
 		return (input);
 	}
-	if (strncmp(input, ".", 1) != 0)
+	else if (input[0] == '.')
 	{
 		input = find_pwd(input);
 		return (input);
 	}
 	else
+	{
+		input = find_path(input);
 		return (input);
+	}
 }

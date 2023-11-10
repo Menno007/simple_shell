@@ -12,8 +12,10 @@ char *find_path(char *input)
 {
 	char *path = _getenv("PATH");
 	char *token;
-	char *full_path;
+	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
+
+	_strcpy(input_copy, input);
 
 	if (path == NULL)
 		return (input);
@@ -26,7 +28,7 @@ char *find_path(char *input)
 	while (token != NULL)
 	{
 		path_len = strlen(token);
-		cmd_len = strlen(input);
+		cmd_len = strlen(input_copy);
 
 		full_path = malloc(path_len + cmd_len + 2);
 		if (full_path == NULL)
@@ -34,7 +36,7 @@ char *find_path(char *input)
 
 		strcpy(full_path, token);
 		strcat(full_path, "/");
-		strcat(full_path, input);
+		strcat(full_path, input_copy);
 
 		if (access(full_path, F_OK | X_OK) == 0)
 		{

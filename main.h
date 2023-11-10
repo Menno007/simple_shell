@@ -22,6 +22,7 @@ char **arg_handle(char *input);
 char *find_path(char *cmd);
 char *input_handle(char *input);
 char *find_pwd(char *input);
+int cases_handle(char *input, int read, char **envp);
 
 
 
