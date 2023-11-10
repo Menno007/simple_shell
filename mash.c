@@ -10,8 +10,8 @@
  */
 int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 {
-	char *input = NULL, **args = NULL;
-	int read, PID, counter;
+	char *input = NULL;
+	int read, PID, counter = 0;
 	size_t len = 0;
 
 	while (1)
@@ -30,7 +30,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			if (PID == 0)
 			{
 				input = input_handle(input);
-				if (execve(input, args, envp) == -1)
+				if (execve(input, argv, envp) == -1)
 				{
 					printf("%s: %d: %s: not found\n", argv[0], counter, input);
 					break;
