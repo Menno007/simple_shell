@@ -31,7 +31,7 @@ char **arg_handle(char *input)
 		tmp = strtok(NULL, " ");
 	}
 	safe_free(input_copy);
-	printf("here?\n");
+	/*printf("here?\n");*/
 	input_copy = malloc(sizeof(char) * (input_len + 1));
 	argv = (char **)malloc((arg_count + 2) * sizeof(char *));
 	if (argv == NULL)
@@ -54,8 +54,8 @@ char **arg_handle(char *input)
 		token = strtok(NULL, " ");
 	}
 	argv[arg_count] = NULL;
-	printf("here? before strcp\n");
-	printf("here? after strcp\n");
+	/*printf("here? before strcp\n");
+	printf("here? after strcp\n");*/
 	free(input_copy);
 	return (argv);
 }
