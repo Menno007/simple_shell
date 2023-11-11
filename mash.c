@@ -29,20 +29,23 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 
 		else
 		{
-			PID = fork();
-			if (PID == 0)
+			input = input_handle(argu[0]);
+			if (input != NULL)
 			{
-				input = input_handle(argu[0]);
-				/*printf("%s", argu[0]);
-				printf("%s", input);*/
-				if (execve(input, argu, envp) == -1)
+				PID = fork();
+				if (PID == 0)
 				{
-					printf("%s: %d: %s: not found\n", argv[0], counter, input);
-					break;
+					/*printf("%s", argu[0]);
+					printf("%s", input);*/
+					if (execve(input, argu, envp) == -1)
+					{
+						printf("%s: %d: %s: not found\n", argv[0], counter, input);
+						break;
+					}
 				}
+				else
+					wait(NULL);
 			}
-			else
-				wait(NULL);
 		}
 		free(argu);
 		free(input);

@@ -52,5 +52,5 @@ char *find_path(char *input)
 		free(full_path);
 	}
 	free(PATH_COPY);
-	return (full_path);
+	return (NULL);
 }
