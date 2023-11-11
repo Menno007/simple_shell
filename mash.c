@@ -37,8 +37,6 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				if (PID == 0)
 				{
 					check_access = input_handle(argu[0]);
-					/*printf("%s", argu[0]);
-					printf("%s", input);*/
 					if (execve(check_access, argu, envp) == -1)
 					{
 						printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
@@ -49,11 +47,11 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 		}
-		free(check_access);
+		if (check_access)
+			free(check_access);
 		free(argu);
 		free(input);
 	}
 	free(argu);
-	free(input);
 	return (0);
 }
