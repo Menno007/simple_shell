@@ -37,7 +37,6 @@ char **arg_handle(char *input)
 	for (i = 0; i < arg_count && token != NULL; i++)
 	{
 		argv[i] = strdup(token);
-		token = strtok(NULL, " ");
 		if (argv[i] == NULL)
 		{
 			free(input_copy);
@@ -45,6 +44,7 @@ char **arg_handle(char *input)
 			free(argv);
 			return (NULL);
 		}
+		token = strtok(NULL, " ");
 	}
 	argv[arg_count] = NULL;
 	strcpy(input, argv[0]);
