@@ -40,12 +40,12 @@ char *find_path(char *input)
 
 		if (access(full_path, F_OK | X_OK) == 0)
 		{
-			strcpy(input, full_path);
-			free(full_path);
-			return (input);
+			/*strcpy(input, full_path)
+			free(full_path);*/
+			return (full_path);
 		}
 		token = strtok(NULL, ":");
 		free(full_path);
 	}
-	return (input);
+	return (full_path);
 }
