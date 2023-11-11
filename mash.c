@@ -24,13 +24,14 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
+
 		if (cases_handle(input, read, envp) == -1)
 			break;
-		argu = argv;
-		argu = arg_handle(input);
 
-		if (check_access)
+		else
 		{
+			argu = argv;
+			argu = arg_handle(input);
 			check_access = find_path(argu[0]);
 			if (check_access != NULL)
 			{
