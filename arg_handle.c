@@ -53,7 +53,7 @@ char **arg_handle(char *input)
 		}
 		token = strtok(NULL, " ");
 	}
-	argv[arg_count - 1] = NULL;
+	argv[arg_count] = NULL;
 	/*printf("here? before strcp\n");
 	printf("here? after strcp\n");*/
 	free(input_copy);
