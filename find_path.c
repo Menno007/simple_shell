@@ -1,4 +1,5 @@
 #include "main.h"
+char *find_path(char *input);
 /**
  * find_path - a function that serches
  *      for the a given file path in the
@@ -11,19 +12,21 @@
 char *find_path(char *input)
 {
 	char *path = _getenv("PATH");
-	char *token;
+	char *token, *PATH_COPY;
 	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
 
+	PATH_COPY = malloc(sizeof(char) * (strlen(path) + 1));
+	strcpy(PATH_COPY, path);
 	_strcpy(input_copy, input);
 
-	if (path == NULL)
+	if (PATH_COPY == NULL)
 		return (input);
 
 	if (input == NULL)
 		return (input);
 
-	token = strtok(path, ":");
+	token = strtok(PATH_COPY, ":");
 
 	while (token != NULL)
 	{
@@ -42,10 +45,12 @@ char *find_path(char *input)
 		{
 			/*strcpy(input, full_path)
 			free(full_path);*/
+			free(PATH_COPY);
 			return (full_path);
 		}
 		token = strtok(NULL, ":");
 		free(full_path);
 	}
+	free(PATH_COPY);
 	return (full_path);
 }
