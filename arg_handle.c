@@ -40,8 +40,8 @@ char **arg_handle(char *input)
 		return (NULL);
 	}
 	strcpy(input_copy, input);
-	argv[0] = strtok(input_copy, " ");
-	for (i = 1; i < arg_count && token != NULL; i++)
+	token = strtok(input_copy, " ");
+	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = strdup(token);
 		if (argv[i] == NULL)
