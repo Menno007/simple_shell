@@ -1,6 +1,5 @@
 #include "main.h"
 int main(int __attribute__((unused))argc, char *argv[], char *envp[]);
-
 /**
  * main - the main function for the shell project
  *
@@ -24,14 +23,15 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
-
+		argu = argv;
+		argu = arg_handle(input);
 		if (cases_handle(input, read, envp) == -1)
 			break;
+		if (argu == NULL)
+			continue;
 
 		else
 		{
-			argu = argv;
-			argu = arg_handle(input);
 			check_access = find_path(argu[0]);
 			if (check_access != NULL)
 			{
@@ -50,11 +50,10 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 		}
-		if (check_access == NULL)
-			free(check_access);
-		free(argu);
-		free(input);
+		free_grid(argu);
 	}
-	free(argu);
+	if (argu)
+		free_grid(argu);
+	free(input);
 	return (0);
 }
