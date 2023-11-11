@@ -40,12 +40,12 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					printf("%s: %d: %s: not found\n", argv[0], counter, input);
 					break;
 				}
-				free(argu);
 			}
 			else
 				wait(NULL);
 		}
 		free(argu);
+		free(input);
 	}
 	free(argu);
 	free(input);
