@@ -10,7 +10,7 @@
  */
 int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 {
-	char *input = NULL;
+	char *check_access = NULL, *input = NULL;
 	char **argu = NULL;
 	int read, PID, counter = 0;
 	size_t len = 0;
@@ -29,17 +29,19 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 
 		else
 		{
-			input = input_handle(argu[0]);
-			if (input != NULL)
+			check_access = find_path(argu[0]);
+			if (check_access != NULL)
 			{
+				free(check_access);
 				PID = fork();
 				if (PID == 0)
 				{
+					check_access = input_handle(argu[0]);
 					/*printf("%s", argu[0]);
 					printf("%s", input);*/
-					if (execve(input, argu, envp) == -1)
+					if (execve(check_access, argu, envp) == -1)
 					{
-						printf("%s: %d: %s: not found\n", argv[0], counter, input);
+						printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
 						break;
 					}
 				}
@@ -47,6 +49,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 		}
+		free(check_access);
 		free(argu);
 		free(input);
 	}
