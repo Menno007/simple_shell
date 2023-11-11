@@ -13,7 +13,10 @@ int cases_handle(char *input, int read, char **envp)
 	if (read == EOF)
 		return (-1);
 	if (_strcmp(input, "exit") == 0)
+	{
+
 		return (-1);
+	}
 	if (_strcmp(input, "env") == 0)
 		print_env(envp);
 

@@ -28,9 +28,10 @@ char **arg_handle(char *input)
     while (tmp != NULL)
     {
         arg_count++;
+        free(tmp);
         tmp = strtok(NULL, " ");
     }
-
+    free(tmp);
     argv = (char **)malloc((arg_count + 2) * sizeof(char *));
     if (argv == NULL)
     {
@@ -48,6 +49,5 @@ char **arg_handle(char *input)
     argv[arg_count + 1] = NULL;
 
     strcpy(input, argv[0]);
-
     return (argv);
 }
