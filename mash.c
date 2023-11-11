@@ -44,7 +44,9 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			else
 				wait(NULL);
 		}
+		free(argu);
 	}
+	free(argu);
 	free(input);
 	return (0);
 }

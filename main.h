@@ -15,6 +15,8 @@ int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 char *_getenv(char *env_var);
+void free_grid(char **grid);
+
 
 char *rm_newline(char *input);
 void print_env(char **envp);

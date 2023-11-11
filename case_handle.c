@@ -14,7 +14,6 @@ int cases_handle(char *input, int read, char **envp)
 		return (-1);
 	if (_strcmp(input, "exit") == 0)
 	{
-
 		return (-1);
 	}
 	if (_strcmp(input, "env") == 0)
