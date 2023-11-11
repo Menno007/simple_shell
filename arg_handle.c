@@ -1,4 +1,10 @@
 #include "main.h"
+char **arg_handle(char *input);
+#define safe_free(freedom)\
+{\
+	free(freedom);\
+	freedom = NULL;\
+}
 /**
  * arg_handle - handels arguments
  * @input: the whole blob of the command compined with its args
@@ -24,8 +30,8 @@ char **arg_handle(char *input)
 		arg_count++;
 		tmp = strtok(NULL, " ");
 	}
-	free(input_copy);
-	input_copy = NULL;
+	safe_free(input_copy);
+	input_copy = malloc(sizeof(char) * (input_len + 1));
 	argv = (char **)malloc((arg_count + 1) * sizeof(char *));
 	if (argv == NULL)
 	{
@@ -47,6 +53,7 @@ char **arg_handle(char *input)
 		token = strtok(NULL, " ");
 	}
 	argv[arg_count] = NULL;
+	strcpy(input, argv[0]);
 	free(input_copy);
 	return (argv);
 }
