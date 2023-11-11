@@ -1,4 +1,6 @@
 #include "main.h"
+int main(int __attribute__((unused))argc, char *argv[], char *envp[]);
+
 /**
  * main - the main function for the shell project
  *
@@ -22,12 +24,12 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
-		argu = argv;
-		argu = arg_handle(input);
 		if (cases_handle(input, read, envp) == -1)
 			break;
+		argu = argv;
+		argu = arg_handle(input);
 
-		else
+		if (check_access)
 		{
 			check_access = find_path(argu[0]);
 			if (check_access != NULL)
