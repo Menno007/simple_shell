@@ -26,7 +26,7 @@ char **arg_handle(char *input)
 		arg_count++;
 		tmp = strtok(NULL, " ");
 	}
-	argv = (char **)malloc((arg_count + 2) * sizeof(char *));
+	argv = (char **)malloc((arg_count + 1) * sizeof(char *));
 	if (argv == NULL)
 	{
 		free(input_copy);
@@ -40,7 +40,7 @@ char **arg_handle(char *input)
 		token = strtok(NULL, " ");
 		argv[i] = token;
 	}
-	argv[arg_count + 1] = NULL;
+	argv[arg_count] = NULL;
 	strcpy(input, argv[0]);
 	free(input_copy);
 	return (argv);
