@@ -47,7 +47,6 @@ char **arg_handle(char *input)
 		token = strtok(NULL, " ");
 	}
 	argv[arg_count] = NULL;
-	strcpy(input, argv[0]);
 	free(input_copy);
 	return (argv);
 }
