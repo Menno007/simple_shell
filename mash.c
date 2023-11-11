@@ -33,7 +33,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			if (PID == 0)
 			{
 				input = input_handle(input);
-				if (execve(input, argu, envp) == -1)
+				if (execve(argu[0], argu, envp) == -1)
 				{
 					printf("%s: %d: %s: not found\n", argv[0], counter, input);
 					break;

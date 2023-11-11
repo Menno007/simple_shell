@@ -55,7 +55,6 @@ char **arg_handle(char *input)
 	}
 	argv[arg_count] = NULL;
 	printf("here? before strcp\n");
-	strcpy(input, argv[0]);
 	printf("here? after strcp\n");
 	free(input_copy);
 	return (argv);
