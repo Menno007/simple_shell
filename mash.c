@@ -50,8 +50,6 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 		}
-		if (check_access)
-			free(check_access);
 		free(argu);
 		free(input);
 	}
