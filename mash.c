@@ -11,6 +11,7 @@
 int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 {
 	char *input = NULL;
+	char **argu = NULL;
 	int read, PID, counter = 0;
 	size_t len = 0;
 
@@ -21,7 +22,8 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
-		*(argv)++ = arg_handle(input);
+		argu = argv;
+		argu = arg_handle(input);
 		if (cases_handle(input, read, envp) == -1)
 			break;
 
@@ -31,7 +33,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			if (PID == 0)
 			{
 				input = input_handle(input);
-				if (execve(input, argv, envp) == -1)
+				if (execve(input, argu, envp) == -1)
 				{
 					printf("%s: %d: %s: not found\n", argv[0], counter, input);
 					break;
