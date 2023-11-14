@@ -16,6 +16,9 @@ char *find_path(char *input)
 	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
 
+	if (input[0] == '/')
+		return ('T');
+
 	PATH_COPY = malloc(sizeof(char) * (strlen(path) + 1));
 	strcpy(PATH_COPY, path);
 	_strcpy(input_copy, input);
