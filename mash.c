@@ -50,9 +50,9 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 		}
-		free_grid(argu);
 		if (check_access && (strcmp(argu[0], check_access) == 1))
 			free(check_access);
+		free_grid(argu);
 	}
 	if (argu)
 		free_grid(argu);
