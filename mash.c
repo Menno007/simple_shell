@@ -37,11 +37,9 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				check_access = argu[0];
 			if (check_access != NULL)
 			{
-				free(check_access);
 				PID = fork();
 				if (PID == 0)
 				{
-					check_access = input_handle(argu[0]);
 					if (execve(check_access, argu, envp) == -1)
 					{
 						printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
