@@ -32,7 +32,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 
 		else
 		{
-			check_access = find_path(argu[0]);
+			check_access = input_handle(argu[0]);
 			if (check_access != NULL)
 			{
 				free(check_access);
