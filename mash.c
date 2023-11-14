@@ -51,7 +51,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			}
 		}
 		free_grid(argu);
-		if (check_access && (strcmp(argu[0], check_access) == 0))
+		if (check_access && (strcmp(argu[0], check_access) == 1))
 			free(check_access);
 	}
 	if (argu)
