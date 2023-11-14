@@ -17,6 +17,10 @@ char *input_handle(char *input)
 		input = find_pwd(input);
 		return (input);
 	}
+	else if (input[0] == '.' && input[1] == '/')
+	{
+		return (input);
+	}
 	else
 	{
 		input = find_path(input);
