@@ -34,7 +34,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		{
 			check_access = find_path(argu[0]);
 			if (check_access[0] == 'T')
-				check_access = argu;
+				check_access = argu[0];
 			if (check_access != NULL)
 			{
 				free(check_access);
