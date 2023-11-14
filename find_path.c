@@ -43,8 +43,6 @@ char *find_path(char *input)
 
 		if (access(full_path, F_OK | X_OK) == 0)
 		{
-			/*strcpy(input, full_path)
-			free(full_path);*/
 			free(PATH_COPY);
 			return (full_path);
 		}
