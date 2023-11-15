@@ -6,7 +6,6 @@ void print_env(void)
 {
 	int j = 0, i = 0;
 
-	while (!environ[i])
 	while (environ[i])
 	{
 		for (; environ[i][j] != '\0' ; j++)

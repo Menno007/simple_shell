@@ -50,7 +50,10 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 			else
+			{
 				_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
+				exit(127);
+			}
 
 		}
 		if (check_access && (strcmp(argu[0], check_access) == 1))
