@@ -28,7 +28,6 @@ char *find_pwd(char *input)
 	if (full_path == NULL)
 	return (input);
 
-
 	strcpy(full_path, pwd);
 	strcat(full_path, &input[1]);
 

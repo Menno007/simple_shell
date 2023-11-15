@@ -16,7 +16,7 @@ char *find_path(char *input)
 	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
 
-	if (input[0] == '/' && access(input, F_OK | X_OK) == 0)
+	if ((input[0] == '/' || input[0] == '.') && access(input, F_OK | X_OK) == 0)
 		return ("T");
 
 	PATH_COPY = malloc(sizeof(char) * (strlen(path) + 1));
