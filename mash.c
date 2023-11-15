@@ -43,7 +43,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				{
 					if (execve(check_access, argu, envp) == -1)
 					{
-						printf("%s: %d: %s: not found\n", argv[0], counter, input);
+						printf("%s: %d: %s: not found\n", argv[0], counter, argu[0]);
 						break;
 					}
 				}
@@ -51,7 +51,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					wait(NULL);
 			}
 			else
-				printf("%s: %d: %s: not found\n", argv[0], counter, input);
+				printf("%s: %d: %s: not found\n", argv[0], counter, argu[0]);
 
 		}
 		if (check_access && (strcmp(argu[0], check_access) == 1))
