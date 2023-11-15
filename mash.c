@@ -1,5 +1,5 @@
 #include "main.h"
-int main(int __attribute__((unused))argc, char *argv[], char *envp[]);
+int main(int __attribute__((unused))argc, char *argv[]);
 /**
  * main - the main function for the shell project
  *
@@ -9,7 +9,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[]);
  *
  * Return: 0 om succes
  */
-int main(int __attribute__((unused))argc, char *argv[], char *envp[])
+int main(int __attribute__((unused))argc, char *argv[])
 {
 	char *check_access = NULL, *input = NULL;
 	char **argu = NULL;
@@ -44,7 +44,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				PID = fork();
 				if (PID == 0)
 				{
-					if (execve(check_access, argu, envp) == -1)
+					if (execve(check_access, argu, NULL) == -1)
 					{
 						fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
 						var_exit = 127;
