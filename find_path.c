@@ -11,13 +11,15 @@ char *find_path(char *input);
  */
 char *find_path(char *input)
 {
-	char *path = _getenv("PATH");
+	char *path = _getenv("PATH=");
 	char *token, *PATH_COPY;
 	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
 
 	if ((input[0] == '/' || input[0] == '.') && access(input, F_OK | X_OK) == 0)
 		return ("T");
+	if (path == NULL)
+		return (NULL);
 
 	PATH_COPY = malloc(sizeof(char) * (strlen(path) + 1));
 	strcpy(PATH_COPY, path);
