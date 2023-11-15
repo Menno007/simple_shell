@@ -9,7 +9,7 @@ void print_env(void)
 	if (!environ)
 		return;
 
-	while (*environ)
+	while (environ[i])
 	{
 		_puts(environ[i]);
 		i++;
