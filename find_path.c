@@ -11,7 +11,7 @@ char *find_path(char *input);
  */
 char *find_path(char *input)
 {
-	char *path = _getenv("PATH=");
+	char *path = _getenv("PATH");
 	char *token, *PATH_COPY;
 	char *full_path, input_copy[1024];
 	size_t cmd_len, path_len;
