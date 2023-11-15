@@ -22,7 +22,7 @@ char **arg_handle(char *input)
 	if (input_copy == NULL)
 		return (NULL);
 	strcpy(input_copy, input);
-	tmp = strtok(input_copy, " \t");
+	tmp = _strtok(input_copy, " \t");
 	if (tmp == NULL)
 	{
 		free(input_copy);
@@ -31,7 +31,7 @@ char **arg_handle(char *input)
 	while (tmp != NULL)
 	{
 		arg_count++;
-		tmp = strtok(NULL, " \t");
+		tmp = _strtok(NULL, " \t");
 	}
 	safe_free(input_copy);
 	input_copy = malloc(sizeof(char) * (input_len + 1));
@@ -42,7 +42,7 @@ char **arg_handle(char *input)
 		return (NULL);
 	}
 	strcpy(input_copy, input);
-	token = strtok(input_copy, " \t");
+	token = _strtok(input_copy, " \t");
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = strdup(token);
@@ -53,7 +53,7 @@ char **arg_handle(char *input)
 			free(argv);
 			return (NULL);
 		}
-		token = strtok(NULL, " \t");
+		token = _strtok(NULL, " \t");
 	}
 	argv[arg_count] = NULL;
 	free(input_copy);

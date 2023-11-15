@@ -27,6 +27,7 @@ char *find_path(char *cmd);
 char *input_handle(char *input);
 char *find_pwd(char *input);
 int cases_handle(char *input, int read);
+char *_strtok(char *string, const char *del);
 
 
 #define BUFF_SIZE 1024

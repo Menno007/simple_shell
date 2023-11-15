@@ -31,7 +31,7 @@ char *find_path(char *input)
 	if (input == NULL)
 		return (input);
 
-	token = strtok(PATH_COPY, ":");
+	token = _strtok(PATH_COPY, ":");
 
 	while (token != NULL)
 	{
@@ -51,7 +51,7 @@ char *find_path(char *input)
 			free(PATH_COPY);
 			return (full_path);
 		}
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 		free(full_path);
 	}
 	free(PATH_COPY);
