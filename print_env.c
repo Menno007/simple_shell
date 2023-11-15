@@ -16,4 +16,3 @@ void print_env(void)
 		i++;
 	}
 }
-
