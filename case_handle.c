@@ -8,7 +8,7 @@
  * Return: -1
  */
 
-int cases_handle(char *input, int read, char **envp)
+int cases_handle(char *input, int read)
 {
 	if (read == EOF)
 		return (-1);
@@ -17,7 +17,7 @@ int cases_handle(char *input, int read, char **envp)
 		return (-1);
 	}
 	if (_strcmp(input, "env") == 0)
-		print_env(envp);
+		print_env();
 
 	return (0);
 }

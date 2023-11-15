@@ -8,7 +8,7 @@
 #include <string.h>
 
 extern char **environ;
-
+void _puts(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
@@ -19,12 +19,12 @@ void free_grid(char **grid);
 
 
 char *rm_newline(char *input);
-void print_env(char **envp);
+void print_env(void);
 char **arg_handle(char *input);
 char *find_path(char *cmd);
 char *input_handle(char *input);
 char *find_pwd(char *input);
-int cases_handle(char *input, int read, char **envp);
+int cases_handle(char *input, int read);
 
 
 

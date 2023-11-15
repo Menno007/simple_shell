@@ -25,7 +25,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		input = rm_newline(input);
 		argu = argv;
 		argu = arg_handle(input);
-		if (cases_handle(input, read, envp) == -1)
+		if (cases_handle(input, read) == -1)
 			break;
 		if (argu == NULL)
 			continue;
