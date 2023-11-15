@@ -4,11 +4,16 @@
 */
 void print_env(void)
 {
-	int i;
+	int j = 0, i = 0;
 
-	for (i = 0; environ[i] != NULL; i++)
+	while (!environ[i])
+	while (environ[i])
 	{
-		write(1, environ[i], strlen(environ[i]));
+		for (; environ[i][j] != '\0' ; j++)
+		{
+			write(1, &environ[i][j], 1);
+		}
+		write(1, "\n", 1);
+		i++;
 	}
-
 }
