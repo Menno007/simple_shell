@@ -13,7 +13,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 {
 	char *check_access = NULL, *input = NULL;
 	char **argu = NULL;
-	int read, PID, counter = 0;
+	int read, PID, counter = 0, var_exit = 0;
 	size_t len = 0;
 
 	while (1)
@@ -26,8 +26,12 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		argu = argv;
 		argu = arg_handle(input);
 		if (cases_handle(input, read) == -1)
-			break;
-
+		{
+			if (argu)
+				free_grid(argu);
+			free(input);
+			exit(var_exit);
+		}
 		if (argu == NULL)
 			continue;
 		else
@@ -52,7 +56,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			else
 			{
 				_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
-				exit(127);
+				var_exit = 127;
 			}
 
 		}
@@ -63,5 +67,5 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 	if (argu)
 		free_grid(argu);
 	free(input);
-	return (0);
+	return (var_exit);
 }
