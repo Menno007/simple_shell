@@ -23,52 +23,52 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
-		argu = argv;
-		argu = arg_handle(input);
 		if (_strcmp(input, "env") == 0)
 			_env();
-		else if (cases_handle(input, read) == -1)
+		else
+		{
+		argu = argv;
+		argu = arg_handle(input);
+		if (cases_handle(input, read) == -1)
 		{
 			if (argu)
 				free_grid(argu);
 			free(input);
 			exit(var_exit);
 		}
+		if (argu == NULL)
+			continue;
 		else
 		{
-			if (argu == NULL)
-				continue;
-			else
+			check_access = find_path(argu[0]);
+			if (check_access && (check_access[0] == 'T'))
+				check_access = argu[0];
+			if (check_access != NULL)
 			{
-				check_access = find_path(argu[0]);
-				if (check_access && (check_access[0] == 'T'))
-					check_access = argu[0];
-				if (check_access != NULL)
+				PID = fork();
+				if (PID == 0)
 				{
-					PID = fork();
-					if (PID == 0)
-					{
 					if (execve(check_access, argu, envp) == -1)
 					{
 						fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
 						var_exit = 127;
 						break;
 					}
-					}
-					else
-						wait(NULL);
 				}
 				else
-				{
-					fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
-					var_exit = 127;
-				}
-
+					wait(NULL);
 			}
-			if (check_access && (strcmp(argu[0], check_access) == 1))
-				free(check_access);
-			free_grid(argu);
+			else
+			{
+				fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
+				var_exit = 127;
+			}
+
 		}
+		if (check_access && (strcmp(argu[0], check_access) == 1))
+			free(check_access);
+		free_grid(argu);
+	}
 	}
 	if (argu)
 		free_grid(argu);
