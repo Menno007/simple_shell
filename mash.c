@@ -43,7 +43,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				{
 					if (execve(check_access, argu, envp) == -1)
 					{
-						ـprintf("%s: %d: %s: not found\n", argv[0], counter, check_access);
+						printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
 						break;
 					}
 				}
