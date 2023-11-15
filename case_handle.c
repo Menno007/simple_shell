@@ -4,7 +4,6 @@
  *							for the shell project
  * @input: input
  * @read: getline return
- * @envp: env
  * Return: -1
  */
 
