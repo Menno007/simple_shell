@@ -10,5 +10,5 @@
  */
 char *_strtok(char *string, const char *del)
 {
-	return (_strtok(string, del));
+	return (strtok(string, del));
 }
