@@ -13,7 +13,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 {
 	char *check_access = NULL, *input = NULL;
 	char **argu = NULL;
-	int read, PID, counter = 0, status, exit_status;
+	int read, PID, counter = 0;
 	size_t len = 0;
 
 	while (1)
@@ -43,12 +43,11 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 					if (execve(check_access, argu, envp) == -1)
 					{
 						_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
-						exit(EXIT_FAILURE);
+						break;
 					}
 				}
 				else
-					waitpid(PID, &status, 0);
-				exit_status = WEXITSTATUS(status);
+					wait(NULL);
 			}
 			else
 				_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
@@ -61,5 +60,5 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 	if (argu)
 		free_grid(argu);
 	free(input);
-	return (exit_status);
+	return (0);
 }
