@@ -27,14 +27,14 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		argu = arg_handle(input);
 		if (cases_handle(input, read) == -1)
 			break;
+		printf("%s1\n", input);
+
 		if (argu == NULL)
 			continue;
-
 		else
 		{
 			check_access = find_path(argu[0]);
-			printf("here??????");
-			if (check_access[0] == 'T')
+			if (check_access && (check_access[0] == 'T'))
 				check_access = argu[0];
 			if (check_access != NULL)
 			{
@@ -43,13 +43,16 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				{
 					if (execve(check_access, argu, envp) == -1)
 					{
-						printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
+						printf("%s: %d: %s: not found\n", argv[0], counter, input);
 						break;
 					}
 				}
 				else
 					wait(NULL);
 			}
+			else
+				printf("%s: %d: %s: not found\n", argv[0], counter, input);
+
 		}
 		if (check_access && (strcmp(argu[0], check_access) == 1))
 			free(check_access);
