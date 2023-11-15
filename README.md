@@ -1,2 +1,2 @@
-simple shell project x
+simple shell project
  
