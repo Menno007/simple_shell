@@ -1,17 +1,19 @@
 #include "main.h"
 /**
  * print_env - prints the eviron var list
+ * @envp: the environ var list
 */
 void print_env(void)
 {
-	int i = 0;
+	int j = 0, i = 0;
 
-	if (!environ)
-		return;
-
-	while (environ[i])
+	while (!environ[i])
 	{
-		_puts(environ[i]);
+		for (; environ[i][j] != '\0' ; j++)
+		{
+			write(1, &environ[i][j], 1);
+		}
+		write(1, "\n", 1);
 		i++;
 	}
 }
