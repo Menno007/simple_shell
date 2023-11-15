@@ -16,7 +16,7 @@ int cases_handle(char *input, int read)
 		return (-1);
 	}
 	if (_strcmp(input, "env") == 0)
-		print_env();
+		_env();
 
 	return (0);
 }
