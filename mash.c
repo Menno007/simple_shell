@@ -33,6 +33,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		else
 		{
 			check_access = find_path(argu[0]);
+			printf("here??????");
 			if (check_access[0] == 'T')
 				check_access = argu[0];
 			if (check_access != NULL)
@@ -42,7 +43,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				{
 					if (execve(check_access, argu, envp) == -1)
 					{
-						_printf("%s: %d: %s: not found\n", argv[0], counter, check_access);
+						ـprintf("%s: %d: %s: not found\n", argv[0], counter, check_access);
 						break;
 					}
 				}
