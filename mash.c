@@ -46,7 +46,8 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 				{
 					if (execve(check_access, argu, envp) == -1)
 					{
-						_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
+						fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
+						var_exit = 127;
 						break;
 					}
 				}
@@ -55,7 +56,7 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			}
 			else
 			{
-				_printf("%s: %d: %s: not found\n", argv[0], 1, argu[0]);
+				fprintf(stderr, "%s: %d: %s: not found\n", argv[0], 1, argu[0]);
 				var_exit = 127;
 			}
 
