@@ -19,9 +19,8 @@ char *_strdup(char *str);
 char *_getenv(char *env_var);
 void free_grid(char **grid);
 
-void _env(void);
 char *rm_newline(char *input);
-/*void print_env(void);*/
+void print_env(void);
 char **arg_handle(char *input);
 char *find_path(char *cmd);
 char *input_handle(char *input);

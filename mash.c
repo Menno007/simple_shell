@@ -23,10 +23,6 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 			printf("Minno&HYPER~$ ");
 		read = getline(&input, &len, stdin);
 		input = rm_newline(input);
-		if (_strcmp(input, "env") == 0)
-			_env();
-		else
-		{
 		argu = argv;
 		argu = arg_handle(input);
 		if (cases_handle(input, read) == -1)
@@ -68,7 +64,6 @@ int main(int __attribute__((unused))argc, char *argv[], char *envp[])
 		if (check_access && (strcmp(argu[0], check_access) == 1))
 			free(check_access);
 		free_grid(argu);
-	}
 	}
 	if (argu)
 		free_grid(argu);
