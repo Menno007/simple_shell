@@ -27,5 +27,13 @@ char *find_pwd(char *input);
 int cases_handle(char *input, int read);
 
 
+#define BUFF_SIZE 1024
+
+int _printf(const char *format, ...);
+int print_char(char c);
+int print_string(const char *str);
+int print_percent(void);
+int print_format(char format, va_list args);
+int print_int(int integer);
 
 #endif
