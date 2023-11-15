@@ -20,3 +20,4 @@ int cases_handle(char *input, int read)
 
 	return (0);
 }
+
